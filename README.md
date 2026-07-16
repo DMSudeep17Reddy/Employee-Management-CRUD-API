@@ -1,91 +1,103 @@
 # Employee Management CRUD REST API
+
+A backend REST API application developed using **Spring Boot** for managing employee records.  
+The project demonstrates CRUD operations, database integration, migration management, validation, exception handling, logging, unit testing, and code coverage analysis.
+
 ---
 
-## Internship Tasks
+# Internship Tasks
 
 This project was developed as part of my internship assignment.
 
-### Task 1
+## Task 1
 Develop a CRUD REST API for Employee Management using Spring Boot.
 
-### Task 2
-Integrate the application with a MySQL database using Spring Data JPA and Flyway Database Migration. Create database schema through migration scripts and seed sample employee data.
+## Task 2
+Integrate the application with MySQL using Spring Data JPA and Flyway Database Migration.  
+Create the database schema using migration scripts and insert sample employee data.
+
+## Task 3
+Implement Unit Testing using JUnit 5 and Mockito, add application logging using SLF4J, and generate code coverage reports using JaCoCo.
 
 ---
----
 
-### Requirements Completed
+# Requirements Completed
 
+- Spring Boot REST API
 - Spring Web
 - Spring Data JPA
-- MySQL Database Integration
+- MySQL Database
 - Flyway Database Migration
-- CRUD Operations (Create, Read, Update, Delete)
+- CRUD Operations
 - DTO Implementation
-- Jakarta Bean Validation
-- Sample Data Seeding
+- Bean Validation
+- Exception Handling
 - Proper HTTP Status Codes
+- SLF4J Logging
+- Unit Testing using JUnit 5
+- Mockito Service Layer Testing
+- Controller Layer Testing using MockMvc
+- JaCoCo Code Coverage Report
 
----
-  
 ---
 
 # Project Overview
 
-The Employee Management CRUD REST API is a backend application built using Spring Boot. It provides RESTful APIs to manage employee records stored in a MySQL database. The application follows a layered architecture using Controller, Service, Repository, DTO, and Entity classes.
+The **Employee Management CRUD REST API** is a backend application built using Spring Boot.
+
+The application provides RESTful APIs to perform CRUD operations on employee records stored in a MySQL database.
+
+The project follows a layered architecture:
+
+- Controller Layer
+- Service Layer
+- Repository Layer
+- Entity Layer
+- DTO Layer
+- Exception Handling Layer
+
+This architecture improves maintainability, scalability, and separation of concerns.
 
 ---
 
----
-
-# Database Migration
-
-Flyway is used for database version control.
-
-Migration Files:
-
-- V1__Create_Employee_Table.sql
-  - Creates the Employee table.
-
-- V2__Insert_Sample_Data.sql
-  - Inserts sample employee records into the database.
-
-Flyway automatically executes pending migrations during application startup and maintains the migration history in the `flyway_schema_history` table.
-
----
-
----
 # Technologies Used
 
-- Java 21
-- Spring Boot 3.5.4
-- Spring Web
-- Spring Data JPA
-- MySQL
-- Flyway Database Migration
-- Maven
-- Postman
-- Git & GitHub
-
----
+| Technology | Version |
+|------------|---------|
+| Java | 21 |
+| Spring Boot | 3.5.4 |
+| Spring Web | - |
+| Spring Data JPA | - |
+| MySQL | - |
+| Flyway | - |
+| JUnit 5 | - |
+| Mockito | - |
+| JaCoCo | - |
+| Maven | - |
+| Git | - |
+| GitHub | - |
+| Postman | - |
 
 ---
 
 # Features
 
-- Create a new Employee
-- Retrieve all Employees
-- Retrieve Employee by ID
-- Update Employee details
-- Delete Employee
-- Input Validation
+- Employee CRUD REST APIs
 - DTO-based architecture
-- Exception Handling
-- RESTful API design
-- Flyway Database Versioning
-- Automatic Database Migration
+- Bean Validation
+- Global Exception Handling
+- Repository Pattern
+- Service Layer Implementation
+- RESTful API Design
+- MySQL Database Integration
+- Flyway Database Migration
 - Sample Data Initialization
-  
+- SLF4J Logging
+- Unit Testing using JUnit 5
+- Mockito-based Service Testing
+- MockMvc Controller Testing
+- JaCoCo Code Coverage Reports
+
 ---
 
 # Project Structure
@@ -94,11 +106,14 @@ Flyway automatically executes pending migrations during application startup and 
 employee-management
 │
 ├── src
+│   │
 │   ├── main
+│   │   │
 │   │   ├── java
 │   │   │   └── net
 │   │   │       └── javaguides
 │   │   │           └── employeemanagement
+│   │   │
 │   │   │               ├── controller
 │   │   │               │   └── EmployeeController.java
 │   │   │               │
@@ -127,6 +142,7 @@ employee-management
 │   │   │               └── EmployeeManagementApplication.java
 │   │   │
 │   │   └── resources
+│   │       │
 │   │       ├── application.properties
 │   │       │
 │   │       └── db
@@ -135,28 +151,60 @@ employee-management
 │   │               └── V2__Insert_Sample_Data.sql
 │   │
 │   └── test
+│       │
 │       └── java
+│           └── net
+│               └── javaguides
+│                   └── employeemanagement
 │
-├── target
+│                       ├── controller
+│                       │   └── EmployeeControllerTest.java
+│                       │
+│                       ├── service
+│                       │   └── EmployeeServiceTest.java
+│                       │
+│                       └── EmployeeManagementApplicationTests.java
 │
-├── Employee-Management-CRUD-API.postman_collection.json
-├── HELP.md
+├── pom.xml
 ├── mvnw
 ├── mvnw.cmd
-├── pom.xml
+├── .gitignore
 ├── README.md
-└── .gitignore
-
+└── Employee-Management-CRUD-API.postman_collection.json
 ```
+
+---
+
+# Database Migration
+
+Flyway is used for database version control.
+
+Migration files:
+
+## V1__Create_Employee_Table.sql
+
+Creates the Employee table.
+
+## V2__Insert_Sample_Data.sql
+
+Inserts sample employee records into the database.
+
+During application startup:
+
+- Flyway checks migration versions.
+- Executes pending migrations.
+- Creates database schema.
+- Inserts initial employee data.
+- Maintains migration history in `flyway_schema_history`.
 
 ---
 
 # Database Schema
 
-Employee Table
+## Employee Table
 
-| Column | Type |
-|---------|------|
+| Column | Data Type |
+|--------|-----------|
 | id | BIGINT |
 | first_name | VARCHAR(255) |
 | last_name | VARCHAR(255) |
@@ -164,50 +212,51 @@ Employee Table
 
 ---
 
----
-
 # API Endpoints
 
 | HTTP Method | Endpoint | Description |
 |-------------|----------|-------------|
-| POST | `/api/employees` | Create a new Employee |
-| GET | `/api/employees` | Retrieve all Employees |
-| GET | `/api/employees/{id}` | Retrieve Employee by ID |
+| POST | `/api/employees` | Create Employee |
+| GET | `/api/employees` | Get All Employees |
+| GET | `/api/employees/{id}` | Get Employee By ID |
 | PUT | `/api/employees/{id}` | Update Employee |
 | DELETE | `/api/employees/{id}` | Delete Employee |
 
 ---
 
-# Sample Request
+# Sample API Request
 
-### Create Employee
+## Create Employee
 
-**POST** `/api/employees`
+### POST
+```
+/api/employees
+```
+
+Request Body:
 
 ```json
 {
-  "firstName": "Sudeep",
-  "lastName": "Reddy",
-  "email": "sudeep@gmail.com"
+    "firstName": "Sudeep",
+    "lastName": "Reddy",
+    "email": "sudeep@gmail.com"
+}
+```
+
+Response:
+
+```json
+{
+    "id": 1,
+    "firstName": "Sudeep",
+    "lastName": "Reddy",
+    "email": "sudeep@gmail.com"
 }
 ```
 
 ---
 
-# Sample Response
-
-```json
-{
-  "id": 1,
-  "firstName": "Sudeep",
-  "lastName": "Reddy",
-  "email": "sudeep@gmail.com"
-}
-```
-
----
-
-# Sample cURL Commands
+# cURL Commands
 
 ## Create Employee
 
@@ -217,17 +266,23 @@ curl -X POST http://localhost:8080/api/employees \
 -d "{\"firstName\":\"Sudeep\",\"lastName\":\"Reddy\",\"email\":\"sudeep@gmail.com\"}"
 ```
 
+---
+
 ## Get All Employees
 
 ```bash
 curl -X GET http://localhost:8080/api/employees
 ```
 
-## Get Employee by ID
+---
+
+## Get Employee By ID
 
 ```bash
 curl -X GET http://localhost:8080/api/employees/1
 ```
+
+---
 
 ## Update Employee
 
@@ -236,6 +291,8 @@ curl -X PUT http://localhost:8080/api/employees/1 \
 -H "Content-Type: application/json" \
 -d "{\"firstName\":\"D M\",\"lastName\":\"Sudeep Reddy\",\"email\":\"dmsudeepreddy17@gmail.com\"}"
 ```
+
+---
 
 ## Delete Employee
 
@@ -249,57 +306,127 @@ curl -X DELETE http://localhost:8080/api/employees/2
 
 | Status Code | Description |
 |-------------|-------------|
-| 200 OK | Request successful |
+| 200 OK | Successful request |
 | 201 Created | Employee created successfully |
 | 400 Bad Request | Invalid request data |
-| 404 Not Found | Employee not found |
+| 404 Not Found | Employee does not exist |
 
 ---
 
----
+# Logging Implementation
 
-# Application Startup
+Logging is implemented using **SLF4J**.
 
-When the application starts:
+The application logs:
 
-- Flyway validates migration scripts.
-- Creates the database schema if it does not exist.
-- Executes pending migrations.
-- Seeds sample employee data.
-- Starts the Spring Boot application.
+- Employee creation
+- Employee retrieval
+- Employee update
+- Employee deletion
+- Warning messages when employee records are not found
+
+Logging improves debugging and application monitoring.
 
 ---
 
 # Testing
 
-The API was successfully tested using Postman.
+The project contains automated tests for Controller and Service layers.
 
-The following operations were verified:
+## Service Layer Testing
+
+Test cases include:
 
 - Create Employee
-- Retrieve Employee(s)
+- Get Employee By ID
+- Get All Employees
 - Update Employee
 - Delete Employee
+- Employee Not Found Exception
+
+
+## Controller Layer Testing
+
+Tested APIs:
+
+- POST `/api/employees`
+- GET `/api/employees`
+- GET `/api/employees/{id}`
+- PUT `/api/employees/{id}`
+- DELETE `/api/employees/{id}`
+
+
+## Testing Tools
+
+- JUnit 5
+- Mockito
+- Spring Boot Test
+- MockMvc
+
+All test cases pass successfully.
 
 ---
+
+# Code Coverage Report
+
+JaCoCo is integrated to measure unit test coverage.
+
+## Coverage Summary
+
+| Package | Coverage |
+|---------|----------|
+| Controller | 100% |
+| DTO | 100% |
+| Exception | 100% |
+| Entity | 91% |
+| Service Implementation | 90% |
+| Application | 37% |
+
+## Overall Coverage
+
+**91% Instruction Coverage**
+
+Generate the report using:
+
+```bash
+mvn clean test
+```
+
+Report location:
+
+```
+target/site/jacoco/index.html
+```
+
+---
+
+# Application Startup Flow
+
+When the application starts:
+
+1. Spring Boot initializes the application.
+2. Flyway validates migration scripts.
+3. Database tables are created.
+4. Sample employee data is inserted.
+5. JPA connects with MySQL database.
+6. REST APIs become available.
 
 ---
 
 # Future Improvements
 
 - Spring Security with JWT Authentication
-- Pagination and Sorting
 - Swagger/OpenAPI Documentation
-- Docker Support
-- Unit and Integration Testing
-- Role-Based Authentication
-- Audit Logging
-- Database Relationships
-- CI/CD Pipeline
+- Docker Containerization
+- Pagination and Sorting
+- Integration Testing
+- GitHub Actions CI/CD Pipeline
+- Role-Based Authorization
+- Docker Compose
+- Kubernetes Deployment
 
 ---
 
----
 # ScreenShots
 
 -Eclipse Project Structure
@@ -325,18 +452,31 @@ The following operations were verified:
 <img width="1600" height="900" alt="Screenshot 2026-07-16 111952" src="https://github.com/user-attachments/assets/caa26688-4126-4590-bdbc-eed15ba485fb" />
 <img width="1600" height="900" alt="Screenshot 2026-07-16 111824" src="https://github.com/user-attachments/assets/3a833233-0b7b-420a-8e64-75a903c93ff5" />
 
+-Task 3 snaps
+
+<img width="1224" height="483" alt="Screenshot 2026-07-16 172057" src="https://github.com/user-attachments/assets/7ffd8b42-ca9e-4400-baa9-41ed1d32649f" />
+<img width="1595" height="295" alt="Screenshot 2026-07-16 171857" src="https://github.com/user-attachments/assets/69d24172-0127-4f6b-a09c-b0a2174a9e31" />
+<img width="1146" height="34" alt="Screenshot 2026-07-16 134943" src="https://github.com/user-attachments/assets/56f59721-df81-4961-820a-986ab211e57d" />
+<img width="1173" height="334" alt="Screenshot 2026-07-16 134808" src="https://github.com/user-attachments/assets/e3ecf5ee-46d2-4893-b4e9-9b6c298b2144" />
+<img width="1189" height="579" alt="Screenshot 2026-07-16 134530" src="https://github.com/user-attachments/assets/6b75e828-d648-490f-9a30-40f4a71e39cb" />
+
+
 - GitHub Repository
 
 <img width="1600" height="900" alt="Screenshot 2026-07-16 115140" src="https://github.com/user-attachments/assets/7e145da5-bd22-43c9-b329-dc95ebeb463c" />
 
+
+---
 ---
 
 # Author
 
 **D M Sudeep**
 
-B.Tech - Computer Science and Engineering
-
+B.Tech - Computer Science and Engineering  
 Presidency University, Bengaluru
 
-GitHub: https://github.com/DMSudeep17Reddy
+GitHub:  
+https://github.com/DMSudeep17Reddy
+
+---
